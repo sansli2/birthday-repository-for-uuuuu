@@ -3,32 +3,71 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Day 1: Passport to 22</title>
+  <title>Stage 1: Recruitment</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="portal-container">
-    <span class="badge">2 Days Before</span>
-    <h1>Passport to 22</h1>
-    <p class="subtitle">Your adventure into a brand new age begins here.</p>
+    <span class="badge">STAGE 1: ACTIVATED</span>
+    <h1>YOU HAVE BEEN CHOSEN</h1>
+    <p class="subtitle" style="color: #D4AF37; font-style: italic;">
+      "Agent Jo, you were selected for this 3-day mission based on your 5-year track record of chaos, main character energy, and survival skills."
+    </p>
 
-    <div style="border: 2px solid #D4AF37; padding: 25px; background: #FFFDF9; margin-top: 20px;">
-      <h2 style="margin-top:0;">Boarding Pass: Flight #22</h2>
-      <p><strong>Passenger:</strong> Bestie</p>
-      <p><strong>Destination:</strong> The Best Year Yet</p>
-      <p><strong>Seat:</strong> First Class</p>
-      <hr style="border: 0; border-top: 1px dashed #D4AF37; margin: 15px 0;">
-      <p><em>Click the stamps below to reveal special notes!</em></p>
-      
+    <div style="border: 2px solid #D4AF37; padding: 20px; background: #FFFDF9; margin-top: 20px;">
+      <h2>🍜 Step 1: Agent Fuel Selection</h2>
+      <p>Select your mission meal (500 Birr Budget):</p>
       <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
-        <button onclick="alert('Stamp #1: To more late-night food adventures together!')" style="padding: 10px 15px; background: #2B1B17; color: #D4AF37; border: none; cursor: pointer; font-family: inherit;">Paris Stamp</button>
-        <button onclick="alert('Stamp #2: May this year bring you closer to all your dream travels!')" style="padding: 10px 15px; background: #2B1B17; color: #D4AF37; border: none; cursor: pointer; font-family: inherit;">Tokyo Stamp</button>
-        <button onclick="alert('Stamp #3: Valid for 1 free dinner anywhere you choose!')" style="padding: 10px 15px; background: #2B1B17; color: #D4AF37; border: none; cursor: pointer; font-family: inherit;">Food Voucher Stamp</button>
+        <button onclick="addFood('Korean Fried Chicken 🍗', 300)" style="padding: 10px; background: #2B1B17; color: #D4AF37; border: none; cursor: pointer;">Fried Chicken (300B)</button>
+        <button onclick="addFood('Ramen 🍜', 200)" style="padding: 10px; background: #2B1B17; color: #D4AF37; border: none; cursor: pointer;">Ramen (200B)</button>
+        <button onclick="addFood('Boba 🧋', 150)" style="padding: 10px; background: #2B1B17; color: #D4AF37; border: none; cursor: pointer;">Boba (150B)</button>
       </div>
+      <p id="food-summary" style="margin-top: 15px; font-weight: bold; color: #2B1B17;"></p>
+    </div>
+
+    <div style="border: 2px solid #D4AF37; padding: 20px; background: #FFFDF9; margin-top: 20px;">
+      <h2>✈️ Step 2: Emergency Response Test</h2>
+      <p>Your flight to Seoul is delayed 8 hours. What is Jo's protocol?</p>
+      <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap;">
+        <button onclick="travelChoice('A')" style="padding: 10px; background: #8A9A86; color: white; border: none; cursor: pointer;">Hunt for Food 🍟</button>
+        <button onclick="travelChoice('B')" style="padding: 10px; background: #8A9A86; color: white; border: none; cursor: pointer;">Duty Free Shopping 🛍️</button>
+        <button onclick="travelChoice('C')" style="padding: 10px; background: #8A9A86; color: white; border: none; cursor: pointer;">Napping Strategy 😴</button>
+      </div>
+      <p id="travel-result" style="margin-top: 15px; font-style: italic;"></p>
+    </div>
+
+    <div style="border: 2px dashed #D4AF37; padding: 20px; background: #2B1B17; color: #FFD700; margin-top: 25px;">
+      <h3>🔑 Stage 1 Clearance Passcode</h3>
+      <p>Save this secret passcode! You will need it to enter Stage 2 tomorrow:</p>
+      <h1 style="letter-spacing: 5px; color: #FFD700;">CHAO5</h1>
     </div>
 
     <br><br>
-    <a href="index.html" style="color: #2B1B17; text-decoration: underline;">&larr; Back to Main Portal</a>
+    <a href="index.html" style="color: #2B1B17; text-decoration: underline;">&larr; Return to Mission Hub</a>
   </div>
+
+  <script>
+    let budget = 500;
+    let items = [];
+
+    function addFood(item, cost) {
+      if (budget >= cost) {
+        budget -= cost;
+        items.push(item);
+        document.getElementById('food-summary').innerText = "Chosen: " + items.join(", ") + " | Remaining: " + budget + "B";
+      } else {
+        alert("Budget exceeded! 😭");
+      }
+    }
+
+    function travelChoice(type) {
+      const responses = {
+        'A': "Verified: Food intake is vital for mission success.",
+        'B': "Main character energy confirmed!",
+        'C': "Resting up for Level 22 chaos."
+      };
+      document.getElementById('travel-result').innerText = responses[type];
+    }
+  </script>
 </body>
 </html>
