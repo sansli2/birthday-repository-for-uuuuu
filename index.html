@@ -12,20 +12,19 @@
     <p class="subtitle">An interactive countdown created just for you</p>
 
     <div class="cards-grid">
-      <!-- Change the dates in openDay('YYYY-MM-DD', ...) to her actual birthday dates! -->
-      <div class="card" onclick="openDay('2026-10-10', 'day1.html')">
+      <div class="card" onclick="openDay('day1.html')">
         <span class="badge">Day 1</span>
         <h2>The Vintage Passport</h2>
         <p>Unlocks 2 Days Before</p>
       </div>
 
-      <div class="card" onclick="openDay('2026-10-11', 'day2.html')">
+      <div class="card" onclick="openDay('day2.html')">
         <span class="badge">Day 2</span>
         <h2>The Lily Botanical Lounge</h2>
         <p>Unlocks 1 Day Before</p>
       </div>
 
-      <div class="card" onclick="openDay('2026-10-12', 'day3.html')">
+      <div class="card" onclick="openDay('day3.html')">
         <span class="badge">Main Event</span>
         <h2>The 22nd Celebration Vault</h2>
         <p>Unlocks on Her Birthday</p>
@@ -34,15 +33,9 @@
   </div>
 
   <script>
-    function openDay(targetDateStr, pageUrl) {
-      const targetDate = new Date(targetDateStr + "T00:00:00");
-      const now = new Date();
-
-      if (now >= targetDate) {
-        window.location.href = pageUrl;
-      } else {
-        alert("Patience! This vintage dispatch doesn't open until " + targetDate.toLocaleDateString());
-      }
+    function openDay(pageUrl) {
+      // Opens immediately without date check so you can test everything
+      window.location.href = pageUrl;
     }
   </script>
 </body>
