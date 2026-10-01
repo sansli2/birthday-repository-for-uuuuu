@@ -3,39 +3,51 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>A Vintage Celebration</title>
+  <title>JO v22.0: Mission Control</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="portal-container">
-    <h1>Chapter 22: The Birthday Dispatches</h1>
-    <p class="subtitle">An interactive countdown created just for you</p>
+    <h1 id="portal-title" style="cursor: pointer;" title="Double-click for preview mode">CLASSIFIED: JO v22.0</h1>
+    <p class="subtitle">Agent Jo, you have been selected for a 3-day operation.</p>
 
     <div class="cards-grid">
-      <div class="card" onclick="openDay('day1.html')">
-        <span class="badge">Day 1</span>
-        <h2>The Vintage Passport</h2>
-        <p>Unlocks 2 Days Before</p>
+      <div class="card" onclick="openDay('2026-10-03', 'day1.html')">
+        <span class="badge">STAGE 1 (Oct 3)</span>
+        <h2>Mission Recruitment</h2>
+        <p>You Have Been Chosen</p>
       </div>
 
-      <div class="card" onclick="openDay('day2.html')">
-        <span class="badge">Day 2</span>
-        <h2>The Lily Botanical Lounge</h2>
-        <p>Unlocks 1 Day Before</p>
+      <div class="card" onclick="openDay('2026-10-04', 'day2.html')">
+        <span class="badge">STAGE 2 (Oct 4)</span>
+        <h2>The Jo Archives</h2>
+        <p>Decrypt Classified Files</p>
       </div>
 
-      <div class="card" onclick="openDay('day3.html')">
-        <span class="badge">Main Event</span>
-        <h2>The 22nd Celebration Vault</h2>
-        <p>Unlocks on Her Birthday</p>
+      <div class="card" onclick="openDay('2026-10-05', 'day3.html')">
+        <span class="badge">FINAL STAGE (Oct 5)</span>
+        <h2>Level 22 Release</h2>
+        <p>The Ultimate Reveal</p>
       </div>
     </div>
   </div>
 
   <script>
-    function openDay(pageUrl) {
-      // Opens immediately without date check so you can test everything
-      window.location.href = pageUrl;
+    const isPreview = new URLSearchParams(window.location.search).get('preview') === 'true';
+
+    document.getElementById('portal-title').addEventListener('dblclick', () => {
+      window.location.href = window.location.pathname + '?preview=true';
+    });
+
+    function openDay(targetDateStr, pageUrl) {
+      const targetDate = new Date(targetDateStr + "T00:00:00");
+      const now = new Date();
+
+      if (isPreview || now >= targetDate) {
+        window.location.href = pageUrl + (isPreview ? '?preview=true' : '');
+      } else {
+        alert("🔒 ACCESS DENIED, AGENT JO!\n\nThis mission phase unlocks on " + targetDate.toLocaleDateString() + ". Return then!");
+      }
     }
   </script>
 </body>
