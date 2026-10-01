@@ -3,33 +3,47 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Day 2: The Botanical Lounge</title>
+  <title>Stage 2: The Archives</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <div class="portal-container">
-    <span class="badge">1 Day Before</span>
-    <h1>The Lily Botanical Lounge</h1>
-    <p class="subtitle">A peaceful lounge filled with sweet memories & soft music.</p>
+    <span class="badge">STAGE 2: ACTIVATED</span>
+    <h1>THE JO ARCHIVES</h1>
+    <p class="subtitle" style="color: #D4AF37; font-style: italic;">
+      "Welcome back, Agent Jo. You were chosen for this stage because nobody else knows all your secret files."
+    </p>
 
-    <div style="border: 2px solid #D4AF37; padding: 25px; background: #FFFDF9; margin-top: 20px;">
-      <p style="font-size: 24px; color: #D4AF37;">&#127800; &#127800; &#127800;</p>
-      <h2>Click a lily petal to bloom a note:</h2>
+    <div style="border: 2px solid #D4AF37; padding: 20px; background: #FFFDF9; margin-top: 20px;">
+      <h2>🔐 Enter Stage 1 Passcode</h2>
+      <p>Type the passcode you unlocked yesterday (Hint: <code>CHAO5</code>):</p>
       
-      <div style="display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 20px;">
-        <button onclick="alert('Petal 1: You bring so much joy into my life every single day!')" style="padding: 10px 15px; background: #8A9A86; color: white; border: none; cursor: pointer; font-family: inherit;">Petal 1</button>
-        <button onclick="alert('Petal 2: Can\'t wait to celebrate you tomorrow!')" style="padding: 10px 15px; background: #8A9A86; color: white; border: none; cursor: pointer; font-family: inherit;">Petal 2</button>
-        <button onclick="alert('Petal 3: Almost 22! Get ready!')" style="padding: 10px 15px; background: #8A9A86; color: white; border: none; cursor: pointer; font-family: inherit;">Petal 3</button>
-      </div>
+      <input type="text" id="pass-input" placeholder="Enter passcode..." style="padding: 10px; font-size: 16px;">
+      <button onclick="checkPass()" style="padding: 10px 20px; background: #2B1B17; color: #D4AF37; border: none; cursor: pointer; font-weight: bold;">DECRYPT</button>
 
-      <div style="background: #2B1B17; color: #F4EAD5; padding: 15px; margin-top: 15px;">
-        <p style="margin:0;">&#127926; <strong>Gramophone Playlist</strong></p>
-        <p style="font-size: 12px;">Countdown to Midnight: Active</p>
+      <div id="vault-content" style="display: none; margin-top: 20px; text-align: left; background: #F4EAD5; padding: 15px; border-left: 4px solid #D4AF37;">
+        <h3 style="color: #2B1B17;">🔓 ACCESS GRANTED: FILE 002 UNLOCKED</h3>
+        <p><strong>Field Report:</strong> Almost 5 years of friendship recorded. Subject exhibits 100% loyalty and top-tier humor.</p>
+        
+        <div style="background: #2B1B17; color: #FFD700; padding: 15px; margin-top: 10px; border-radius: 5px;">
+          💬 <em>"Get ready... at midnight tonight, the ultimate Level 22 Vault opens for your actual birthday!"</em>
+        </div>
       </div>
     </div>
 
     <br><br>
-    <a href="index.html" style="color: #2B1B17; text-decoration: underline;">&larr; Back to Main Portal</a>
+    <a href="index.html" style="color: #2B1B17; text-decoration: underline;">&larr; Return to Mission Hub</a>
   </div>
+
+  <script>
+    function checkPass() {
+      const input = document.getElementById('pass-input').value.trim().toUpperCase();
+      if (input === 'CHAO5' || input === '22') {
+        document.getElementById('vault-content').style.display = 'block';
+      } else {
+        alert("Access Denied! Double check your passcode from yesterday or try 'CHAO5'.");
+      }
+    }
+  </script>
 </body>
 </html>
